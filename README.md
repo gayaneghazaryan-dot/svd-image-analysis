@@ -72,7 +72,23 @@ allowing reviewers or users to fully reproduce the article’s results from a cl
 - **Cross-domain applications** — supports image compression, denoising, and PCA-based dimensionality reduction.  
 
 ---
+🔁 Reproducing Figures and Tables
 
+All figures and tables presented in the paper are generated automatically by the four Python scripts located in the code/ folder.
+Each script creates its own subdirectories under results/Figures/ and results/Tables/, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
+
+No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control.
+After installation, simply run:
+
+python code/svd_compression_merged.py
+python code/svd_denoising.py
+python code/benchmark_and_plots.py
+python code/pca_adaptive_combined.py
+
+
+This will regenerate the full set of figures and tables exactly as used in the manuscript.
+Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
+---
 ## 📜 License
 
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
@@ -91,3 +107,4 @@ If you use this software, please cite:
 ---
 
 ✦ With only **four commands**, the entire paper and all figures can be reproduced from scratch.
+
