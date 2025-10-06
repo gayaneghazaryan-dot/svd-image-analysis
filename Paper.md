@@ -15,7 +15,7 @@ authors:
 affiliations:
   - name: Yerevan State University, Yerevan, Armenia
     index: 1
-  - name: Provectus, Armenia
+  - name: Provectus
     index: 2
 date: 2025-10-04
 bibliography: paper.bib
@@ -73,6 +73,6 @@ Each script regenerates fixed outputs under results/Figures/ and results/Tables/
 # Acknowledgements
 
 The authors thank the open-source communities of NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib.  
-Institutional support from Yerevan State University and Provectus Armenia is gratefully acknowledged.
+Institutional support from Yerevan State University and Provectus is gratefully acknowledged.
 
 
