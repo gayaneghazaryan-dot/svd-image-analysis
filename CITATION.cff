@@ -5,8 +5,9 @@ authors:
     given-names: Gayane
 #  - family-names: Ghazaryan   # uncomment/add co-authors if needed
 #    given-names: Artashes
-version: 1.0.0
-date-released: 2025-10-04
+doi: https://doi.org/10.5281/zenodo.17289401
+version: 1.0.1
+date-released: 2025-10-07
 message: "If you use this software, please cite it."
 repository-code: https://github.com/gayaneghazaryan-dot/svd-image-analysis
 license: MIT
