@@ -1,60 +1,76 @@
 📘 SVD Image Analysis Toolkit
 
-This repository provides a complete, reproducible implementation of Singular Value Decomposition (SVD) methods for
-image compression, denoising, benchmarking, and dimensionality reduction (PCA).
-It accompanies the article:
+This repository provides a complete, reproducible implementation of Singular Value Decomposition (SVD) methods for image compression, denoising, benchmarking, and dimensionality reduction (PCA). It accompanies the article:
 
 SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection
 Submitted to the Journal of Open Source Software (JOSS), 2025.
 
 🔧 Installation
 
+Platform note: On macOS/Linux use python3 (and python3 -m pip …).
+On Windows use py -3 (or python) for all commands below.
+
 Clone the repository and install dependencies:
 
 git clone https://github.com/gayaneghazaryan-dot/svd-image-analysis.git
 cd svd-image-analysis
-pip install -r requirements.txt
 
 
-💡 Tip:
-All experiments were executed in a virtual environment named myenv.
-To reproduce the same setup:
+Create an isolated environment and install requirements:
 
-python -m venv myenv
+python3 -m venv myenv
 source myenv/bin/activate
-pip install -r requirements.txt
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
 
 
-Python ≥ 3.9 is required (tested on Python 3.13, Windows/macOS/Linux).
+Optional dependency (elbow selection):
+
+python3 -m pip install kneed
+
+
+If kneed is not installed, the code automatically falls back to the energy-based rule.
+
+Python ≥ 3.10 is required (tested on Python 3.13, Windows/macOS/Linux).
 
 🚀 Usage
 
-The toolkit consists of four scripts.
-Each script is self-contained and regenerates all figures and tables for a specific task.
-Outputs are written to results/Figures/ and results/Tables/.
+The toolkit consists of four scripts. Each script is self-contained and regenerates all figures and tables for a specific task. Outputs are written to results/Figures/ and results/Tables/.
 
 # 1) Compression (default built-in "astronaut" image)
-python code/svd_compression_merged.py
+python3 code/svd_compression_merged.py
 
 # 2) Denoising (default built-in "astronaut" image with default noise level)
-python code/svd_denoising.py
+python3 code/svd_denoising.py
 
 # 3) Factorization benchmarks and plots (default "astronaut" and built-in "camera")
-python code/benchmark_and_plots.py
-python code/benchmark_and_plots.py --input=camera
+python3 code/benchmark_and_plots.py
+python3 code/benchmark_and_plots.py --input=camera
 
 # 4) PCA with adaptive component selection (default Iris dataset)
-python code/pca_adaptive_combined.py
+python3 code/pca_adaptive_combined.py
 
 
-Each command automatically regenerates all required figures and tables under results/,
-allowing reviewers or users to fully reproduce the article’s results from a clean environment.
+Each command automatically regenerates all required figures and tables under results/, allowing reviewers or users to fully reproduce the article’s results from a clean environment.
+
+Command-line options (examples)
+# Use a different built-in image
+python3 code/benchmark_and_plots.py --input=camera
+
+# Resize before processing (HxW)
+python3 code/benchmark_and_plots.py --resize=256x256
+
+# Add noise and benchmark on noisy input
+python3 code/benchmark_and_plots.py --use_noisy --sigma=0.10
+
+# Change adaptive energy threshold and strategies
+python3 code/benchmark_and_plots.py --energy=0.995 --strategies energy elbow
 
 📂 Outputs
 
-results/Figures/ → Publication-quality plots
+results/Figures/ → publication-quality plots
 
-results/Tables/ → CSV tables with PSNR, SSIM, runtime, PCA variance, etc.
+results/Tables/ → CSV/LaTeX tables with PSNR, SSIM, runtime, PCA variance, etc.
 
 📊 Example Results
 
@@ -70,8 +86,7 @@ Benchmark performance (astronaut_psnr_vs_k_fixed_offset.pdf)
 
 examples/Tables/ — one CSV file (astronaut_denoising_comparison.csv) showing quantitative PSNR and SSIM results.
 
-These examples demonstrate the structure and appearance of the automatically generated outputs.
-All full results can be reproduced by running the four Python scripts as described above.
+These examples demonstrate the structure and appearance of the automatically generated outputs. All full results can be reproduced by running the four Python scripts as described above.
 
 ✨ Features
 
@@ -83,24 +98,21 @@ Cross-domain applications — supports image compression, denoising, and PCA-bas
 
 🔁 Reproducing Figures and Tables
 
-All figures and tables presented in the paper are generated automatically by the four Python scripts located in the code/ folder.
-Each script creates its own subdirectories under results/Figures/ and results/Tables/, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
+All figures and tables presented in the paper are generated automatically by the four Python scripts located in the code/ folder. Each script creates its own subdirectories under results/Figures/ and results/Tables/, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
 
-No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control.
-After installation, simply run:
+No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control. After installation, simply run:
 
-python code/svd_compression_merged.py
-python code/svd_denoising.py
-python code/benchmark_and_plots.py
-python code/pca_adaptive_combined.py
+python3 code/svd_compression_merged.py
+python3 code/svd_denoising.py
+python3 code/benchmark_and_plots.py
+python3 code/pca_adaptive_combined.py
 
 
-This will regenerate the full set of figures and tables exactly as used in the manuscript.
-Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
+This will regenerate the full set of figures and tables exactly as used in the manuscript. Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
 
 📜 License
 
-This project is licensed under the MIT License – see the LICENSE
+This project is licensed under the MIT License – see the LICENSE.txt
  file for details.
 
 📖 Citation
