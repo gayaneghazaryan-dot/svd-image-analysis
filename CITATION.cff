@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: SVDlab — Reproducible SVD Toolkit for Image Compression, Denoising, and PCA
+authors:
+  - family-names: Ghazaryan
+    given-names: Gayane
+#  - family-names: Ghazaryan   # uncomment/add co-authors if needed
+#    given-names: Artashes
+version: 1.0.0
+date-released: 2025-10-04
+message: "If you use this software, please cite it."
+repository-code: https://github.com/gayaneghazaryan-dot/svd-image-analysis
+license: MIT
