@@ -1,4 +1,6 @@
+
 📘 SVD Image Analysis Toolkit
+[![DOI](https://zenodo.org/badge/DOI/https://doi.org/10.5281/zenodo.17289401.svg)](https://doi.org/https://doi.org/10.5281/zenodo.17289401)
 
 This repository provides a complete, reproducible implementation of Singular Value Decomposition (SVD) methods for image compression, denoising, benchmarking, and dimensionality reduction (PCA). It accompanies the article:
 
