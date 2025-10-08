@@ -1,61 +1,71 @@
+# 📘 SVD Image Analysis Toolkit
 
-📘 SVD Image Analysis Toolkit
-[![DOI](https://zenodo.org/badge/DOI/https://doi.org/10.5281/zenodo.17289401.svg)](https://doi.org/https://doi.org/10.5281/zenodo.17289401)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289401.svg)](https://doi.org/10.5281/zenodo.17289401)
 
-This repository provides a complete, reproducible implementation of Singular Value Decomposition (SVD) methods for image compression, denoising, benchmarking, and dimensionality reduction (PCA). It accompanies the article:
+Archived at Zenodo (concept DOI): https://doi.org/10.5281/zenodo.17289401
 
-SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection
-Submitted to the Journal of Open Source Software (JOSS), 2025.
+---
 
-🔧 Installation
+This repository provides a complete, reproducible implementation of **Singular Value Decomposition (SVD)** methods for **image compression**, **denoising**, **benchmarking**, and **dimensionality reduction (PCA)**.  
+It accompanies the article:
 
-Platform note: On macOS/Linux use python3 (and python3 -m pip …).
-On Windows use py -3 (or python) for all commands below.
+> **SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection**  
+> Submitted to the *Journal of Open Source Software (JOSS)*, 2025.
 
-Clone the repository and install dependencies:
+---
 
+## 🔧 Installation
+
+Platform note:  
+- On **macOS/Linux**, use `python3` (and `python3 -m pip …`).  
+- On **Windows**, use `py -3` (or `python`) for all commands below.
+
+```bash
+# Clone the repository
 git clone https://github.com/gayaneghazaryan-dot/svd-image-analysis.git
 cd svd-image-analysis
 
-
-Create an isolated environment and install requirements:
-
+# Create an isolated environment and install dependencies
 python3 -m venv myenv
 source myenv/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 
-
-Optional dependency (elbow selection):
-
+# Optional dependency (for elbow selection)
 python3 -m pip install kneed
+```
 
-
-If kneed is not installed, the code automatically falls back to the energy-based rule.
-
+If `kneed` is not installed, the code automatically falls back to the energy-based rule.  
 Python ≥ 3.10 is required (tested on Python 3.13, Windows/macOS/Linux).
 
-🚀 Usage
+---
 
-The toolkit consists of four scripts. Each script is self-contained and regenerates all figures and tables for a specific task. Outputs are written to results/Figures/ and results/Tables/.
+## 🚀 Usage
 
-# 1) Compression (default built-in "astronaut" image)
+The toolkit consists of four self-contained scripts.  
+Each reproduces all figures and tables for one of the main tasks.  
+Outputs are written to `results/Figures/` and `results/Tables/`.
+
+```bash
+# 1) Image compression
 python3 code/svd_compression_merged.py
 
-# 2) Denoising (default built-in "astronaut" image with default noise level)
+# 2) Image denoising
 python3 code/svd_denoising.py
 
-# 3) Factorization benchmarks and plots (default "astronaut" and built-in "camera")
+# 3) Factorization benchmarks
 python3 code/benchmark_and_plots.py
-python3 code/benchmark_and_plots.py --input=camera
 
-# 4) PCA with adaptive component selection (default Iris dataset)
+# 4) PCA with adaptive component selection
 python3 code/pca_adaptive_combined.py
+```
 
+Each command regenerates all required figures and tables, allowing reviewers to reproduce the article’s results from a clean environment.
 
-Each command automatically regenerates all required figures and tables under results/, allowing reviewers or users to fully reproduce the article’s results from a clean environment.
+<details>
+<summary>Optional: Advanced CLI arguments (not required for JOSS reproduction)</summary>
 
-Command-line options (examples)
+```bash
 # Use a different built-in image
 python3 code/benchmark_and_plots.py --input=camera
 
@@ -67,63 +77,72 @@ python3 code/benchmark_and_plots.py --use_noisy --sigma=0.10
 
 # Change adaptive energy threshold and strategies
 python3 code/benchmark_and_plots.py --energy=0.995 --strategies energy elbow
+```
+</details>
 
-📂 Outputs
+---
 
-results/Figures/ → publication-quality plots
+## 📂 Outputs
 
-results/Tables/ → CSV/LaTeX tables with PSNR, SSIM, runtime, PCA variance, etc.
+```
+results/
+ ├── Figures/   → publication-quality plots
+ └── Tables/    → CSV/LaTeX tables with PSNR, SSIM, runtime, PCA variance, etc.
+```
 
-📊 Example Results
+Example outputs are provided under `examples/` for illustration:
 
-To provide an overview of typical outputs, a few representative figures and tables are included under the examples/ folder:
+- **examples/Figures/** — sample plots (compression, denoising, PCA, benchmarking)  
+- **examples/Tables/** — representative CSV file with PSNR/SSIM metrics  
 
-examples/Figures/ — sample plots illustrating:
+These examples demonstrate the structure and appearance of the automatically generated outputs.  
+All full results can be reproduced by running the four Python scripts above.
 
-Image compression and denoising results (astronaut_svd_comparison_995.pdf, astronaut_spectrum.png)
+---
 
-PCA visualization (pca_2d_scatter.pdf)
+## ✨ Features
 
-Benchmark performance (astronaut_psnr_vs_k_fixed_offset.pdf)
+- **Adaptive rank selection** — combines energy thresholding and elbow detection for robust SVD truncation  
+- **Unified benchmarking** — transparent comparisons of SVD, EVD, and QR under identical conditions  
+- **Cross-domain applications** — supports image compression, denoising, and PCA-based dimensionality reduction  
 
-examples/Tables/ — one CSV file (astronaut_denoising_comparison.csv) showing quantitative PSNR and SSIM results.
+---
 
-These examples demonstrate the structure and appearance of the automatically generated outputs. All full results can be reproduced by running the four Python scripts as described above.
+## 🔁 Reproducing Figures and Tables
 
-✨ Features
+All figures and tables presented in the paper are generated automatically by the four Python scripts located in the `code/` folder.  
+Each script creates its own subdirectories under `results/Figures/` and `results/Tables/`, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
 
-Adaptive rank selection — combines energy thresholding and elbow detection for robust SVD truncation.
+No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control.  
+After installation, simply run:
 
-Unified benchmarking — transparent comparisons of SVD, EVD, and QR under identical conditions.
-
-Cross-domain applications — supports image compression, denoising, and PCA-based dimensionality reduction.
-
-🔁 Reproducing Figures and Tables
-
-All figures and tables presented in the paper are generated automatically by the four Python scripts located in the code/ folder. Each script creates its own subdirectories under results/Figures/ and results/Tables/, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
-
-No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control. After installation, simply run:
-
+```bash
 python3 code/svd_compression_merged.py
 python3 code/svd_denoising.py
 python3 code/benchmark_and_plots.py
 python3 code/pca_adaptive_combined.py
+```
 
+This will regenerate the full set of figures and tables exactly as referenced in the JOSS manuscript.  
+Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
 
-This will regenerate the full set of figures and tables exactly as used in the manuscript. Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
+---
 
-📜 License
+## 📜 License
 
-This project is licensed under the MIT License – see the LICENSE.txt
- file for details.
+This project is licensed under the **MIT License** – see the `LICENSE.txt` file for details.
 
-📖 Citation
+---
+
+## 📖 Citation
 
 If you use this software, please cite:
 
-Ghazaryan, G., & Ghazaryan, A. (2025).
-SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection.
-Journal of Open Source Software (JOSS).
-DOI: to be assigned upon acceptance.
+> Ghazaryan, G., & Ghazaryan, A. (2025).  
+> *SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection.*  
+> *Journal of Open Source Software (JOSS).*  
+> DOI: to be assigned upon acceptance.  
+>  
+> Archived at Zenodo: [https://doi.org/10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)
 
 ✦ With only four commands, the entire paper and all figures can be reproduced from scratch.
