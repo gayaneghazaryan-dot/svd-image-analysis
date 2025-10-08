@@ -84,5 +84,8 @@ The current release emphasizes deterministic CPU backends for reproducibility an
 
 The authors thank the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib. We also acknowledge foundational references in linear algebra, SVD/PCA, and inverse problems that inform this work. Institutional support from Yerevan State University and Provectus is gratefully acknowledged.
 
+# References
+```
+
 
 
