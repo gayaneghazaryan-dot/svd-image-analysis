@@ -72,3 +72,4 @@ python3 code/benchmark_and_plots.py
 
 # 4) PCA with adaptive component selection
 python3 code/pca_adaptive_combined.py
+
