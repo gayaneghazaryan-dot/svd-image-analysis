@@ -51,12 +51,12 @@ Many libraries expose SVD/PCA primitives or demonstrate task-specific uses (e.g.
 
 # Features
 
-- 🧠 **Adaptive rank selection** combining cumulative-energy thresholds with Kneedle-based elbow detection [@satopaa2011kneedle].  
-- ⚙️ **Four unified scripts** for image compression, denoising, PCA, and benchmarking.  
-- 🧩 **Reproducibility by design**: fixed random seeds, pinned dependencies, and CPU determinism.  
-- 📊 **Metrics and outputs**: PSNR, SSIM [@wang2004ssim], energy retention, runtime, with automatic PDF/CSV/LaTeX generation.  
-- 🧱 **Cross-platform** (Linux, macOS, Windows; Python ≥ 3.10).  
-- 🪶 **Lightweight execution**: each task reproduces all paper figures/tables via a single command.  
+- **Adaptive rank selection** combining cumulative-energy thresholds with Kneedle-based elbow detection [@satopaa2011kneedle].
+- **Four unified scripts** for image compression, denoising, PCA, and benchmarking.
+- **Reproducibility by design**: fixed random seeds, pinned dependencies, and CPU determinism.
+- **Metrics and outputs**: PSNR, SSIM [@wang2004ssim], energy retention, runtime, with automatic PDF/CSV/LaTeX generation.
+- **Cross-platform** (Linux, macOS, Windows; Python ≥ 3.10).
+- **Lightweight execution**: each task reproduces all paper figures/tables via a single command.
 
 # Example Usage
 
@@ -72,4 +72,17 @@ python3 code/benchmark_and_plots.py
 
 # 4) PCA with adaptive component selection
 python3 code/pca_adaptive_combined.py
+```
+
+Each script regenerates fixed outputs under `results/Figures/` and `results/Tables/`, enabling reviewers to reproduce all results from a clean environment.
+
+# Limitations & Future Work
+
+The current release emphasizes deterministic CPU backends for reproducibility and uses exact factorizations; performance and rank stability on heterogeneous GPU backends may vary. Future work includes optional randomized SVD for large-scale problems, extended datasets/tasks (e.g., color images and video), and GPU-accelerated paths while preserving auditability.
+
+# Acknowledgements
+
+The authors thank the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib. We also acknowledge foundational references in linear algebra, SVD/PCA, and inverse problems that inform this work. Institutional support from Yerevan State University and Provectus is gratefully acknowledged.
+
+
 
