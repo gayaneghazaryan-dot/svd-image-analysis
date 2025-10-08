@@ -1,22 +1,30 @@
 name: Build JOSS paper
 on:
   push:
-    paths: ['Paper.md', 'paper.bib']
+    paths:
+      - 'Paper.md'
+      - 'paper.bib'
+      - '.github/workflows/joss-paper.yml'
+  workflow_dispatch:
 jobs:
   paper:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install pandoc and TeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+          sudo apt-get install -y pandoc \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+
       - name: Build PDF
         run: |
           pandoc Paper.md --from=markdown \
             --pdf-engine=xelatex \
             --citeproc --bibliography=paper.bib \
             -o paper.pdf
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
