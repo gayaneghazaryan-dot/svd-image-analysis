@@ -6,6 +6,7 @@ on:
       - 'paper.bib'
       - '.github/workflows/joss-paper.yml'
   workflow_dispatch:
+
 jobs:
   paper:
     runs-on: ubuntu-latest
@@ -19,10 +20,13 @@ jobs:
             texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
       - name: Build PDF
+        shell: bash
         run: |
-          pandoc Paper.md --from=markdown \
+          pandoc Paper.md \
+            --from=markdown+tex_math_dollars+tex_math_single_backslash \
             --pdf-engine=xelatex \
-            --citeproc --bibliography=paper.bib \
+            --citeproc \
+            --bibliography=paper.bib \
             -o paper.pdf
 
       - name: Upload artifact
