@@ -22,7 +22,7 @@ jobs:
       - name: Build PDF
         shell: bash
         run: |
-          pandoc Paper.md \
+          pandoc paper.md \
             --from=markdown+tex_math_dollars+tex_math_single_backslash \
             --pdf-engine=xelatex \
             --citeproc \
