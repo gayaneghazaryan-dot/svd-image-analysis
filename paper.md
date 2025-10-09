@@ -81,7 +81,7 @@ The current release emphasizes deterministic CPU backends for reproducibility an
 
 Future work includes optional randomized SVD for large-scale problems [@halko2011randomized], extended datasets (e.g., color images and video), and GPU-accelerated paths while preserving auditability.
 
-Acknowledgements
+# Acknowledgements
 
 The authors thank the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib.
 We also acknowledge foundational references in linear algebra, SVD/PCA, and inverse problems that inform this work.
@@ -89,4 +89,4 @@ Institutional support from Yerevan State University and Provectus is gratefully 
 The source code and archived release are available at Zenodo DOI: 10.5281/zenodo.17289401
 .
 
-References
+# References
