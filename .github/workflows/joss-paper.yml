@@ -2,7 +2,7 @@ name: Build JOSS paper
 on:
   push:
     paths:
-      - 'Paper.md'
+      - 'paper.md'
       - 'paper.bib'
       - '.github/workflows/joss-paper.yml'
   workflow_dispatch:
