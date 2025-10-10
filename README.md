@@ -1,8 +1,8 @@
 # 📘 SVD Image Analysis Toolkit
+### *(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289401.svg)](https://doi.org/10.5281/zenodo.17289401)
-
-Archived at Zenodo (concept DOI): https://doi.org/10.5281/zenodo.17289401
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289401.svg)](https://doi.org/10.5281/zenodo.17289401)  
+Archived at Zenodo: [https://doi.org/10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)  
 
 ---
 
@@ -10,6 +10,7 @@ This repository provides a complete, reproducible implementation of **Singular V
 It accompanies the article:
 
 > **SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection**  
+> *Ghazaryan, G. & Ghazaryan, A.* (2025).  
 > Submitted to the *Journal of Open Source Software (JOSS)*, 2025.
 
 ---
@@ -31,12 +32,12 @@ source myenv/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 
-# Optional dependency (for elbow selection)
+# Optional dependency (for elbow detection)
 python3 -m pip install kneed
 ```
 
 If `kneed` is not installed, the code automatically falls back to the energy-based rule.  
-Python ≥ 3.10 is required (tested on Python 3.13, Windows/macOS/Linux).
+Python ≥ 3.10 is required (tested on Python 3.13 under Windows/macOS/Linux).
 
 ---
 
@@ -102,15 +103,16 @@ All full results can be reproduced by running the four Python scripts above.
 
 ## ✨ Features
 
-- **Adaptive rank selection** — combines energy thresholding and elbow detection for robust SVD truncation  
+- **Adaptive rank selection** — combines cumulative-energy thresholds with Kneedle-based elbow detection  
 - **Unified benchmarking** — transparent comparisons of SVD, EVD, and QR under identical conditions  
 - **Cross-domain applications** — supports image compression, denoising, and PCA-based dimensionality reduction  
+- **Reproducibility by design** — deterministic results, fixed random seeds, and pinned dependencies  
 
 ---
 
 ## 🔁 Reproducing Figures and Tables
 
-All figures and tables presented in the paper are generated automatically by the four Python scripts located in the `code/` folder.  
+All figures and tables presented in the paper are generated automatically by the four Python scripts in the `code/` folder.  
 Each script creates its own subdirectories under `results/Figures/` and `results/Tables/`, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
 
 No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control.  
@@ -140,9 +142,7 @@ If you use this software, please cite:
 
 > Ghazaryan, G., & Ghazaryan, A. (2025).  
 > *SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection.*  
-> *Journal of Open Source Software (JOSS).*  
-> DOI: to be assigned upon acceptance.  
->  
-> Archived at Zenodo: [https://doi.org/10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)
+> *Journal of Open Source Software (JOSS),* 2025.  
+> DOI: [10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)
 
 ✦ With only four commands, the entire paper and all figures can be reproduced from scratch.

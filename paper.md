@@ -1,62 +1,84 @@
 ---
 title: "SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection"
+
 authors:
   - name: Gayane Ghazaryan
     affiliation: 1
+  - name: Artashes Ghazaryan
+    affiliation: 2
+
 affiliations:
-  - name: Yerevan State University, Department of Mathematics and Mechanics
+  - name: Institute of Physics, Yerevan State University, Armenia
     index: 1
-date: 2025-10-08
+  - name: Provectus Research
+    index: 2
+
+date: 2025-10-11
 bibliography: paper.bib
 link-citations: true
+
+tags:
+  - Singular Value Decomposition
+  - Image Compression
+  - Denoising
+  - Principal Component Analysis
+  - Reproducibility
+  - Python
 ---
+
+
 
 # Summary
 
-**SVDlab** is an open-source Python toolkit that operationalizes the **Singular Value Decomposition (SVD)** for three canonical tasks—image compression, image denoising, and principal component analysis (PCA)—using a task-agnostic **adaptive rank-selection** rule.  
+**SVDlab** is an open-source Python toolkit that demonstrates how the **Singular Value Decomposition (SVD)** can be applied in three classical yet powerful contexts: **image compression**, **image denoising**, and **principal component analysis (PCA)**. It is designed for readers who want a small, reliable toolkit that connects the theory of SVD with practical, reproducible workflows.  
 
-The adaptive policy combines a cumulative-energy threshold with elbow detection (Kneedle algorithm) to select a stable truncation rank  
-$k^* = \max(k_\tau, k_e)$, balancing reconstruction fidelity and over-truncation [@satopaa2011kneedle; @eckart1936approximation; @jolliffe2016pca].
+The central practical question is *how many* singular values to keep. SVDlab provides an adaptive rank-selection rule that automatically balances reconstruction quality and efficiency. The strategy combines a cumulative-energy threshold with elbow detection (Kneedle), choosing  
+$k^* = \max(k_\tau, k_e)$ — a simple default that avoids under-selection and keeps results stable across datasets [@satopaa2011kneedle; @eckart1936approximation; @jolliffe2002pca].
 
-The toolkit standardizes datasets, metrics (PSNR, SSIM, energy retention, runtime), and figure/table generation, ensuring that all results are **reproducible** from four one-line commands.  
-Benchmarks against eigenvalue decomposition (EVD) and pivoted thin QR clarify accuracy–speed trade-offs, showing that adaptive rank selection improves reproducibility and consistency across noise levels and hardware backends [@gu1996efficient; @wang2004ssim].
+All results can be **reproduced** from four one-line commands. The toolkit generates standardized outputs — figures, tables, and metrics such as PSNR, SSIM, energy retention, and runtime — and records metadata so that every artifact can be traced back to its code, parameters, and versions. Benchmarks against eigenvalue decomposition (EVD) and pivoted thin QR show how adaptive rank selection improves reproducibility and consistency across noise levels and hardware backends [@gu1996efficient; @wang2004ssim].
 
 # Statement of Need
 
-Although SVD is central to modern data analysis and imaging [@golub2013matrix; @andrews1976svd], rank selection—the choice of how many singular values to retain—remains inconsistent across studies and implementations.  
-This variability undermines reproducibility and comparability in applications such as image compression, denoising, and PCA [@jolliffe2016pca].  
+Although SVD is central to modern data analysis and imaging [@golub2013matrix; @andrews1976svd], choosing how many singular values to keep — *rank selection* — remains inconsistent across studies and implementations. This makes results difficult to reproduce and compare, especially in image processing and dimensionality reduction [@jolliffe2002pca].  
 
-The research community increasingly expects computational work to follow FAIR and reproducible-research practices [@wilkinson2016fair; @stodden2016enhancing], yet turnkey toolkits that unify preprocessing, rank selection, and artifact generation across tasks are still rare.  
+At the same time, reproducibility has become a core value in computational research, reflected in the **FAIR** principles [@wilkinson2016fair] and broader calls for transparent scientific software [@stodden2016enhancing]. Yet practical tools that integrate preprocessing, adaptive rank selection, and reproducible artifact generation across multiple tasks are still uncommon.
 
-**SVDlab** addresses this gap by providing a single, reproducible framework that:
+**SVDlab** addresses this need by providing a single, reproducible framework that:
+- Unifies preprocessing, adaptive rank selection, and evaluation across different tasks.  
+- Implements a principled adaptive rule that combines cumulative-energy and elbow criteria [@satopaa2011kneedle].  
+- Generates publication-ready artifacts (figures, tables, CSV/LaTeX outputs) with complete metadata.  
+- Ensures one-command reproducibility through fixed random seeds and version-pinned dependencies.  
 
-- Unifies preprocessing, adaptive rank selection, and evaluation across multiple tasks.  
-- Implements a principled adaptive rule combining cumulative-energy and elbow criteria [@satopaa2011kneedle].  
-- Generates publication-ready artifacts (figures, tables, CSV/LaTeX outputs) with recorded metadata.  
-- Enables one-command reproducibility and deterministic results through fixed seeds and version-pinned dependencies.  
-
-The toolkit benefits researchers and educators seeking transparent, auditable SVD experiments that bridge mathematical theory and computational practice.  
-It also supports systematic benchmarking of matrix factorizations (SVD, EVD, QR) and serves as a lightweight foundation for reproducible teaching laboratories and algorithmic research.
+The toolkit supports both researchers and educators who seek transparent and auditable SVD experiments that bridge mathematical theory with computational practice. It also offers a flexible foundation for reproducible teaching laboratories and algorithmic research.
 
 # Novelty and Relation to Prior Work
 
-Many libraries expose SVD/PCA primitives or demonstrate task-specific uses (e.g., for compression or denoising), but **SVDlab** contributes:
+Many existing libraries provide SVD or PCA functions, and some illustrate their use for specific tasks such as compression or denoising. **SVDlab**, however, contributes in several distinctive ways:
 
-1. **Cross-task standardization** – a single interface for compression, denoising, and PCA with consistent preprocessing, metrics, and outputs, facilitating like-for-like comparisons.  
-2. **Adaptive, task-agnostic rank selection** – a hybrid cumulative-energy + elbow policy yielding stable $k^*$ across tasks and datasets [@satopaa2011kneedle], grounded in classical low-rank approximation theory [@eckart1936approximation].  
-3. **Reproducible artifacts by design** – all figures and tables regenerate from four commands with fixed seeds and pinned dependencies, aligning with modern reproducibility guidance [@wilkinson2016fair; @stodden2016enhancing].  
-4. **Methodological breadth** – side-by-side SVD/EVD/QR comparisons under identical conditions, with rank-revealing QR included as a baseline [@gu1996efficient] and standardized quality metrics (PSNR, SSIM) [@wang2004ssim].  
+1. **Cross-task standardization** — a single interface for compression, denoising, and PCA, ensuring consistent preprocessing, metrics, and outputs. Storage is reported with a simple parameter-count proxy \(mk + nk + k\) for \(U_k,\Sigma_k,V_k\), enabling like-for-like comparisons across methods and ranks.  
+2. **Adaptive, task-agnostic rank selection** — a hybrid cumulative-energy plus elbow-based rule that yields stable $k^*$ across datasets and domains [@satopaa2011kneedle], grounded in the classical theory of low-rank approximation [@eckart1936approximation].  
+3. **Reproducible artifacts by design** — all figures and tables are generated deterministically from four commands, aligning with current best practices in reproducible computational research [@wilkinson2016fair; @stodden2016enhancing].  
+4. **Methodological breadth** — standardized benchmarking of SVD, EVD, and QR factorizations under identical conditions, using widely accepted image-quality metrics (PSNR and SSIM) [@gu1996efficient; @wang2004ssim].  
 
-This design advances both research and education by integrating mathematical theory, numerical practice, and reproducible workflows into one coherent toolkit.
+By combining these elements, **SVDlab** turns theoretical linear algebra concepts into a coherent, hands-on toolkit that is equally suitable for research, teaching, and reproducible experimentation.
 
 # Features
 
-- Adaptive rank selection combining cumulative-energy thresholds with Kneedle-based elbow detection [@satopaa2011kneedle].  
-- Four unified scripts for image compression, denoising, PCA, and benchmarking.  
-- Reproducibility by design: fixed random seeds, pinned dependencies, and CPU determinism.  
-- Metrics and outputs: PSNR, SSIM [@wang2004ssim], energy retention, runtime, with automatic PDF/CSV/LaTeX generation.  
-- Cross-platform (Linux, macOS, Windows; Python ≥ 3.10).  
-- Lightweight execution: each task reproduces all paper figures and tables via a single command.
+- Adaptive rank selection that merges cumulative-energy and Kneedle-based elbow detection [@satopaa2011kneedle].  
+- Four ready-to-use Python scripts covering image compression, denoising, PCA, and benchmarking.  
+- Deterministic results guaranteed by fixed random seeds and pinned dependencies.  
+- Automatic export of results as PDF, CSV, and LaTeX tables.  
+- Cross-platform support (Linux, macOS, Windows; Python ≥ 3.10).  
+- Lightweight execution: all figures and tables from this paper can be generated with four simple commands.  
+- Sensible defaults and graceful fallbacks — e.g., \(\tau\approx 0.995\) for high-fidelity compression and \(\tau\in[0.95,0.99]\) for denoising; if elbow detection is inconclusive, the energy rule is used.  
+- PCA parity — cumulative energy \(\eta_k\) coincides with explained variance for mean-centered data, so the same policy selects the number of components.
+
+**Adaptive rank selection (concise):**
+1) Compute singular values \(\{\sigma_i\}\) and cumulative energy \(\eta_k=\sum_{i\le k}\sigma_i^2/\sum_{i}\sigma_i^2\).  
+2) Threshold rule: \(k_\tau=\min\{k:\eta_k\ge\tau\}\).  
+3) Elbow rule: apply Kneedle to the cumulative curve to get \(k_e\).  
+4) Default: \(k^*=\max(k_\tau,k_e)\). (Aggressive option: \(\min(k_\tau,k_e)\).)  
+5) Fallbacks: if no elbow is detected, use \(k_\tau\); clip \(k\) to \([1,r]\).
 
 # Example Usage
 
@@ -73,20 +95,12 @@ python3 code/benchmark_and_plots.py
 # 4) PCA with adaptive component selection
 python3 code/pca_adaptive_combined.py
 ```
-Each script regenerates fixed outputs under results/Figures/ and results/Tables/, enabling reviewers to reproduce all results from a clean environment.
+Each script automatically saves results under results/Figures/ and results/Tables/, allowing reviewers and readers to reproduce every figure and table from a clean environment. All scripts fix random seeds and pin dependency versions to ensure deterministic runs.
 
-Limitations and Future Work
-
-The current release emphasizes deterministic CPU backends for reproducibility and uses exact factorizations; performance and rank stability on heterogeneous GPU backends may vary.
-
-Future work includes optional randomized SVD for large-scale problems [@halko2011randomized], extended datasets (e.g., color images and video), and GPU-accelerated paths while preserving auditability.
+# Limitations and Future Work
+The current scope targets exact (non-randomized) factorizations on moderate-scale problems; large-scale randomized and streaming variants are future work. The present release focuses on deterministic CPU-based implementations; performance and rank stability may vary on GPU backends. Future versions will include randomized SVD for large-scale problems [@halko2011randomized], support for color images and video, and optional GPU acceleration — while maintaining full reproducibility and auditability.
 
 # Acknowledgements
-
-The authors thank the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib.
-We also acknowledge foundational references in linear algebra, SVD/PCA, and inverse problems that inform this work.
-Institutional support from Yerevan State University and Provectus is gratefully acknowledged.
-The source code and archived release are available at Zenodo DOI: 10.5281/zenodo.17289401
-.
+We are deeply grateful to the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib, whose work made this toolkit possible. I also thank my colleagues at Yerevan State University and Provectus for their continuous support and feedback. The complete source and archived release are available at Zenodo (DOI: 10.5281/zenodo.17289401).
 
 # References

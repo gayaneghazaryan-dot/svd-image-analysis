@@ -1,13 +1,27 @@
 cff-version: 1.2.0
-title: SVDlab — Reproducible SVD Toolkit for Image Compression, Denoising, and PCA
+title: "SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection"
 authors:
   - family-names: Ghazaryan
     given-names: Gayane
-#  - family-names: Ghazaryan   # uncomment/add co-authors if needed
-#    given-names: Artashes
-doi: https://doi.org/10.5281/zenodo.17289401
-version: 1.0.1
-date-released: 2025-10-07
-message: "If you use this software, please cite it."
-repository-code: https://github.com/gayaneghazaryan-dot/svd-image-analysis
+    affiliation: Institute of Physics, Yerevan State University, Armenia
+  - family-names: Ghazaryan
+    given-names: Artashes
+    affiliation: Provectus Research
+doi: 10.5281/zenodo.17289401
+version: "1.0.2"
+date-released: 2025-10-11
 license: MIT
+repository-code: https://github.com/gayaneghazaryan-dot/svd-image-analysis
+message: "If you use this software, please cite it as follows:"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Ghazaryan
+      given-names: Gayane
+    - family-names: Ghazaryan
+      given-names: Artashes
+  title: "SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection"
+  journal: Journal of Open Source Software (JOSS)
+  year: 2025
+  doi: 10.5281/zenodo.17289401
+  url: https://doi.org/10.5281/zenodo.17289401
