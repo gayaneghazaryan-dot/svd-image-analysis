@@ -1,9 +1,8 @@
 # 📘 SVD Image Analysis Toolkit
 ### *(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17289401.svg)](https://doi.org/10.5281/zenodo.17289401)  
-Archived at Zenodo: [https://doi.org/10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)  
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17313445.svg)](https://doi.org/10.5281/zenodo.17313445)  
+Archived at Zenodo: [https://doi.org/10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)  
 ---
 
 This repository provides a complete, reproducible implementation of **Singular Value Decomposition (SVD)** methods for **image compression**, **denoising**, **benchmarking**, and **dimensionality reduction (PCA)**.  
@@ -142,7 +141,8 @@ If you use this software, please cite:
 
 > Ghazaryan, G., & Ghazaryan, A. (2025).  
 > *SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection.*  
-> *Journal of Open Source Software (JOSS),* 2025.  
-> DOI: [10.5281/zenodo.17289401](https://doi.org/10.5281/zenodo.17289401)
+> *Journal of Open Source Software (JOSS).*  
+> DOI: [10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)
 
 ✦ With only four commands, the entire paper and all figures can be reproduced from scratch.
+
