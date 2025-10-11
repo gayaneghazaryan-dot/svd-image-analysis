@@ -101,6 +101,7 @@ Each script automatically saves results under results/Figures/ and results/Table
 The current scope targets exact (non-randomized) factorizations on moderate-scale problems; large-scale randomized and streaming variants are future work. The present release focuses on deterministic CPU-based implementations; performance and rank stability may vary on GPU backends. Future versions will include randomized SVD for large-scale problems [@halko2011randomized], support for color images and video, and optional GPU acceleration — while maintaining full reproducibility and auditability.
 
 # Acknowledgements
-We are deeply grateful to the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib, whose work made this toolkit possible. I also thank my colleagues at Yerevan State University and Provectus for their continuous support and feedback. The complete source and archived release are available at Zenodo (DOI: 10.5281/zenodo.17289401).
+We are deeply grateful to the open-source communities behind NumPy, SciPy, scikit-image, scikit-learn, and Matplotlib, whose work made this toolkit possible. I also thank my colleagues at Yerevan State University and Provectus for their continuous support and feedback. The complete source and archived release are available at Zenodo (DOI: 10.5281/zenodo.17313445).
+
 
 # References
