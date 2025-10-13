@@ -74,11 +74,10 @@ By combining these elements, **SVDlab** turns theoretical linear algebra concept
 - PCA parity — cumulative energy \(\eta_k\) coincides with explained variance for mean-centered data, so the same policy selects the number of components.
 
 **Adaptive rank selection (concise):**
-1) Compute singular values \(\{\sigma_i\}\) and cumulative energy \(\eta_k=\sum_{i\le k}\sigma_i^2/\sum_{i}\sigma_i^2\).  
-2) Threshold rule: \(k_\tau=\min\{k:\eta_k\ge\tau\}\).  
-3) Elbow rule: apply Kneedle to the cumulative curve to get \(k_e\).  
-4) Default: \(k^*=\max(k_\tau,k_e)\). (Aggressive option: \(\min(k_\tau,k_e)\).)  
-5) Fallbacks: if no elbow is detected, use \(k_\tau\); clip \(k\) to \([1,r]\).
+1) Compute singular values $\{\sigma_i\}$ and cumulative energy $\eta_k = \sum_{i \le k}\sigma_i^2 \big/ \sum_{i=1}^{r}\sigma_i^2$.
+2) Threshold rule: $k_\tau = \min\{k : \eta_k \ge \tau\}$.
+3) Elbow rule: apply Kneedle to the cumulative curve to get $k_e$.
+4) Default: $k^* = \max(k_\tau, k_e)$ (aggressive: $\min(k_\tau, k_e)$). Fallbacks: if no elbow is detected, use $k_\tau$; clip $k$ to $[1,r]$.
 
 # Example Usage
 
