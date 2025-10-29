@@ -1,16 +1,17 @@
-# 📘 SVD Image Analysis Toolkit
+# 📘 Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments
+
 ### *(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17313445.svg)](https://doi.org/10.5281/zenodo.17313445)  
-Archived at Zenodo: [https://doi.org/10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)  
+Archived at Zenodo: [https://doi.org/10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)
+
 ---
 
-This repository provides a complete, reproducible implementation of **Singular Value Decomposition (SVD)** methods for **image compression**, **denoising**, **benchmarking**, and **dimensionality reduction (PCA)**.  
-It accompanies the article:
+This repository accompanies the article:
 
-> **SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection**  
-> *Ghazaryan, G. & Ghazaryan, A.* (2025).  
-> Submitted to the *Journal of Open Source Software (JOSS)*, 2025.
+> **Ghazaryan, G., & Ghazaryan, A. (2025).**  
+> *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
+> Submitted to *Mathematical Problems of Computer Science (MPCS)*, 2025.
 
 ---
 
@@ -33,6 +34,7 @@ python3 -m pip install -r requirements.txt
 
 # Optional dependency (for elbow detection)
 python3 -m pip install kneed
+
 ```
 
 If `kneed` is not installed, the code automatically falls back to the energy-based rule.  
@@ -60,10 +62,10 @@ python3 code/benchmark_and_plots.py
 python3 code/pca_adaptive_combined.py
 ```
 
+
 Each command regenerates all required figures and tables, allowing reviewers to reproduce the article’s results from a clean environment.
 
-<details>
-<summary>Optional: Advanced CLI arguments (not required for JOSS reproduction)</summary>
+<details> <summary>Optional: Advanced CLI arguments (not required for MPCS reproduction)</summary>
 
 ```bash
 # Use a different built-in image
@@ -124,7 +126,7 @@ python3 code/benchmark_and_plots.py
 python3 code/pca_adaptive_combined.py
 ```
 
-This will regenerate the full set of figures and tables exactly as referenced in the JOSS manuscript.  
+This will regenerate the full set of figures and tables exactly as referenced in the MPCS manuscript.
 Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
 
 ---
@@ -140,9 +142,10 @@ This project is licensed under the **MIT License** – see the `LICENSE.txt` fil
 If you use this software, please cite:
 
 > Ghazaryan, G., & Ghazaryan, A. (2025).  
-> *SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection.*  
-> *Journal of Open Source Software (JOSS).*  
+> *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
+> *Mathematical Problems of Computer Science (MPCS).*  
 > DOI: [10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)
+
 
 ✦ With only four commands, the entire paper and all figures can be reproduced from scratch.
 
