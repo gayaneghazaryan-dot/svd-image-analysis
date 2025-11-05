@@ -1,0 +1,6 @@
+Method,Rank k,PSNR (dB),SSIM,Energy η_k
+Manual (fixed-$k$),50,27.35,0.747,0.993
+Adaptive (95% energy),9,18.58,0.459,0.951
+Adaptive (99.5% energy),59,28.54,0.787,0.995
+Adaptive (elbow),35,25.13,0.671,0.989
+Adaptive (elbow + guard),59,28.54,0.787,0.995

@@ -1,0 +1,7 @@
+﻿method,strategy,strategy_key,k_star,psnr_db,ssim,energy_percent,time_ms
+SVD,energy_tau=0.995,energy_tau={args.energy:.3f},59,28.54,0.787,99.5,96
+EVD,energy_tau=0.995,energy_tau={args.energy:.3f},59,28.54,0.787,99.5,63
+QR,energy_tau=0.995,energy_tau={args.energy:.3f},59,24.72,0.648,99.5,46
+SVD,elbow,elbow,35,25.13,0.671,98.9,95
+EVD,elbow,elbow,35,25.13,0.671,98.9,63
+QR,elbow,elbow,35,21.82,0.555,98.9,45

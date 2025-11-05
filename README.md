@@ -1,14 +1,13 @@
-# 📘 Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments
+# 📘 Singular Value Decomposition in Image Processing and Data Analysis  
+### *Theory, Algorithms, and Reproducible Experiments*
 
-### *(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
+*(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17313445.svg)](https://doi.org/10.5281/zenodo.17313445)  
-Archived at Zenodo: [https://doi.org/10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)
+Archived at Zenodo (DOI to be assigned upon acceptance)
 
 ---
 
-This repository accompanies the article:
-
+### Associated article
 > **Ghazaryan, G., & Ghazaryan, A. (2025).**  
 > *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
 > Submitted to *Mathematical Problems of Computer Science (MPCS)*, 2025.
@@ -17,36 +16,33 @@ This repository accompanies the article:
 
 ## 🔧 Installation
 
-Platform note:  
-- On **macOS/Linux**, use `python3` (and `python3 -m pip …`).  
-- On **Windows**, use `py -3` (or `python`) for all commands below.
+**Requirements**  
+- Python ≥ 3.10 (tested on Python 3.13 under macOS, Linux, and Windows)  
+- Recommended: create a virtual environment  
 
 ```bash
 # Clone the repository
 git clone https://github.com/gayaneghazaryan-dot/svd-image-analysis.git
 cd svd-image-analysis
 
-# Create an isolated environment and install dependencies
+# Create and activate an isolated environment
 python3 -m venv myenv
-source myenv/bin/activate
+source myenv/bin/activate  # (on Windows: myenv\Scripts\activate)
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 
-# Optional dependency (for elbow detection)
+# Optional dependency for elbow detection
 python3 -m pip install kneed
-
 ```
 
-If `kneed` is not installed, the code automatically falls back to the energy-based rule.  
-Python ≥ 3.10 is required (tested on Python 3.13 under Windows/macOS/Linux).
+If `kneed` is not installed, the toolkit automatically falls back to the cumulative-energy rule.
 
 ---
 
 ## 🚀 Usage
 
-The toolkit consists of four self-contained scripts.  
-Each reproduces all figures and tables for one of the main tasks.  
-Outputs are written to `results/Figures/` and `results/Tables/`.
+The toolkit includes **four self-contained scripts**, each reproducing all figures and tables for one application.  
+Results are saved to `results/Figures/` and `results/Tables/`.
 
 ```bash
 # 1) Image compression
@@ -55,29 +51,29 @@ python3 code/svd_compression_merged.py
 # 2) Image denoising
 python3 code/svd_denoising.py
 
-# 3) Factorization benchmarks
+# 3) Decomposition benchmarking (SVD, EVD, QR)
 python3 code/benchmark_and_plots.py
 
 # 4) PCA with adaptive component selection
 python3 code/pca_adaptive_combined.py
 ```
 
+Each command reproduces the article’s results from a clean environment.
 
-Each command regenerates all required figures and tables, allowing reviewers to reproduce the article’s results from a clean environment.
-
-<details> <summary>Optional: Advanced CLI arguments (not required for MPCS reproduction)</summary>
+<details>
+<summary>Optional command-line arguments</summary>
 
 ```bash
-# Use a different built-in image
+# Use another built-in image
 python3 code/benchmark_and_plots.py --input=camera
 
 # Resize before processing (HxW)
 python3 code/benchmark_and_plots.py --resize=256x256
 
-# Add noise and benchmark on noisy input
+# Add Gaussian noise for denoising tests
 python3 code/benchmark_and_plots.py --use_noisy --sigma=0.10
 
-# Change adaptive energy threshold and strategies
+# Modify rank-selection parameters
 python3 code/benchmark_and_plots.py --energy=0.995 --strategies energy elbow
 ```
 </details>
@@ -88,35 +84,27 @@ python3 code/benchmark_and_plots.py --energy=0.995 --strategies energy elbow
 
 ```
 results/
- ├── Figures/   → publication-quality plots
- └── Tables/    → CSV/LaTeX tables with PSNR, SSIM, runtime, PCA variance, etc.
+ ├── Figures/   → publication-ready plots  
+ └── Tables/    → CSV/LaTeX tables with PSNR, SSIM, runtime, variance, etc.
 ```
 
-Example outputs are provided under `examples/` for illustration:
-
-- **examples/Figures/** — sample plots (compression, denoising, PCA, benchmarking)  
-- **examples/Tables/** — representative CSV file with PSNR/SSIM metrics  
-
-These examples demonstrate the structure and appearance of the automatically generated outputs.  
-All full results can be reproduced by running the four Python scripts above.
+Example outputs are shown in `examples/` for reference.  
+All figures and tables in the MPCS manuscript are reproduced automatically by the scripts above.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-- **Adaptive rank selection** — combines cumulative-energy thresholds with Kneedle-based elbow detection  
-- **Unified benchmarking** — transparent comparisons of SVD, EVD, and QR under identical conditions  
-- **Cross-domain applications** — supports image compression, denoising, and PCA-based dimensionality reduction  
-- **Reproducibility by design** — deterministic results, fixed random seeds, and pinned dependencies  
+- **Adaptive rank selection** – hybrid cumulative-energy + Kneedle elbow detection  
+- **Unified benchmarking** – consistent SVD, EVD, QR comparison  
+- **Cross-domain coverage** – compression, denoising, and PCA  
+- **Reproducibility by design** – deterministic runs, fixed seeds, pinned dependencies  
 
 ---
 
-## 🔁 Reproducing Figures and Tables
+## 🔁 Reproducing the Paper’s Results
 
-All figures and tables presented in the paper are generated automatically by the four Python scripts in the `code/` folder.  
-Each script creates its own subdirectories under `results/Figures/` and `results/Tables/`, containing all publication-ready outputs in PDF, CSV, and LaTeX formats.
-
-No pre-generated results are stored in the repository to ensure reproducibility and lightweight version control.  
+All figures and tables from the MPCS submission are generated automatically.  
 After installation, simply run:
 
 ```bash
@@ -126,26 +114,26 @@ python3 code/benchmark_and_plots.py
 python3 code/pca_adaptive_combined.py
 ```
 
-This will regenerate the full set of figures and tables exactly as referenced in the MPCS manuscript.
-Each run is deterministic and environment-controlled via fixed random seeds and version-pinned dependencies.
+This will regenerate the complete set of figures and tables referenced in the paper.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** – see the `LICENSE.txt` file for details.
+Released under the **MIT License**.  
+See [`LICENSE.txt`](LICENSE.txt) for details.
 
 ---
 
 ## 📖 Citation
 
-If you use this software, please cite:
+If you use this toolkit, please cite:
 
-> Ghazaryan, G., & Ghazaryan, A. (2025).  
+> **Ghazaryan, G., & Ghazaryan, A. (2025).**  
 > *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
 > *Mathematical Problems of Computer Science (MPCS).*  
-> DOI: [10.5281/zenodo.17313445](https://doi.org/10.5281/zenodo.17313445)
+> (DOI will be provided upon publication.)
 
+---
 
-✦ With only four commands, the entire paper and all figures can be reproduced from scratch.
-
+✦ *With only four commands, the entire paper—including all figures and tables—can be reproduced from scratch.*
