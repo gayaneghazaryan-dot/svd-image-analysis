@@ -1,14 +1,16 @@
-# OS junk
-.DS_Store
-Thumbs.db
-
-# Python cache
 __pycache__/
 *.pyc
 
-# Virtual environments
-myenv/
-venv/
+# LaTeX build
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
 
-# Results (auto-generated)
+# Generated outputs
 results/
+Results/
+examples/
+*.pdf_tex
