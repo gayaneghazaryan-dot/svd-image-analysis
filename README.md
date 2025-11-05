@@ -121,7 +121,7 @@ This will regenerate the complete set of figures and tables referenced in the pa
 ## 📜 License
 
 Released under the **MIT License**.  
-See [`LICENSE.txt`](LICENSE.txt) for details.
+See [`LICENSE`](LICENSE) for details.
 
 ---
 
