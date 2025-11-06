@@ -27,9 +27,9 @@ Archived at Zenodo (DOI to be assigned upon acceptance)
 git clone https://github.com/gayaneghazaryan-dot/svd-image-analysis.git
 cd svd-image-analysis
 
-# Create and activate an isolated environment
+# Create an isolated environment and install dependencies
 python3 -m venv myenv
-source myenv/bin/activate  # (on Windows: myenv\Scripts\activate)
+source myenv/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 
