@@ -1,16 +1,18 @@
-# 📘 Singular Value Decomposition in Image Processing and Data Analysis  
-### *Theory, Algorithms, and Reproducible Experiments*
+# 📘 On the Theory and Application of Singular Value Decomposition in Image Processing and Data Analysis 
+### *Algorithms, Adaptive Methods, and Reproducible Experiments*
 
-*(SVDlab: A Reproducible Toolkit for SVD-based Image Compression, Denoising, and PCA with Adaptive Rank Selection)*  
+
+*(SVDlab: A Reproducible Toolkit Demonstrating the Theory and Application of SVD in Image Processing — Compression, Denoising, and PCA)*
+
 
 Archived at Zenodo (DOI to be assigned upon acceptance)
 
 ---
 
-### Associated article
 > **Ghazaryan, G., & Ghazaryan, A. (2025).**  
-> *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
+> *On the Theory and Application of Singular Value Decomposition in Image Processing and Data Analysis.*  
 > Submitted to *Mathematical Problems of Computer Science (MPCS)*, 2025.
+
 
 ---
 
@@ -88,8 +90,8 @@ results/
  └── Tables/    → CSV/LaTeX tables with PSNR, SSIM, runtime, variance, etc.
 ```
 
-Example outputs are shown in `examples/` for reference.  
-All figures and tables in the MPCS manuscript are reproduced automatically by the scripts above.
+
+All figures and tables in the MPCS manuscript can be reproduced automatically by the scripts above.
 
 ---
 
@@ -130,7 +132,7 @@ See [`LICENSE`](LICENSE) for details.
 If you use this toolkit, please cite:
 
 > **Ghazaryan, G., & Ghazaryan, A. (2025).**  
-> *Singular Value Decomposition in Image Processing and Data Analysis: Theory, Algorithms, and Reproducible Experiments.*  
+> *On the Theory and Application of Singular Value Decomposition in Image Processing and Data Analysis.*  
 > *Mathematical Problems of Computer Science (MPCS).*  
 > (DOI will be provided upon publication.)
 
