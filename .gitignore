@@ -1,3 +1,28 @@
+# macOS system files
+.DS_Store
+*/.DS_Store
+
+# Python caches
+__pycache__/
+*.pyc
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+
+# Archives and temporary files
+*.zip
+*.tar
+*.gz
+
+# Generated results and examples
+results/
+Results/
+examples/
 __pycache__/
 *.pyc
 
