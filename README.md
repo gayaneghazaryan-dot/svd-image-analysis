@@ -5,13 +5,13 @@
 *(SVDlab: A Reproducible Toolkit Demonstrating the Theory and Application of SVD in Image Processing — Compression, Denoising, and PCA)*
 
 
-Archived at Zenodo (DOI to be assigned upon acceptance)
+Repository archive DOI will be added when available.
 
 ---
 
-> **Ghazaryan, G., & Ghazaryan, A. (2025).**  
+> **Ghazaryan, G., & Ghazaryan, A. (2026).**  
 > *On the Theory and Application of Singular Value Decomposition in Image Processing and Data Analysis.*  
-> Submitted to *Mathematical Problems of Computer Science (MPCS)*, 2025.
+> Accepted for publication in Mathematical Problems of Computer Science (MPCS)
 
 
 ---

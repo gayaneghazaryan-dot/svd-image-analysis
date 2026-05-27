@@ -116,13 +116,13 @@ Singular Value Decomposition (SVD) is a cornerstone of numerical linear algebra 
 
 Despite its elegance, a persistent practical difficulty is the choice of truncation rank $k$. This parameter determines the balance between fidelity, compression ratio, and computational cost~\cite{hansen1998rank,gavish2014optimal}. Existing strategies rely either on cumulative-energy thresholds, which require task-specific tuning, or elbow rules, which tend to underestimate the rank when singular values decay gradually~\cite{satopaa2011kneedle}. Consequently, applications often rely on ad hoc heuristics, which reduce reproducibility.
 
-\paragraph{This work.}
-We propose an \textbf{adaptive rank selection} strategy that integrates cumulative energy and elbow detection within a unified SVD pipeline. 
+In this work, we propose an adaptive rank selection strategy that integrates cumulative energy and elbow detection within a unified SVD pipeline.
 Concretely, we adopt a conservative hybrid rule
 \[
 k^\star = \max\!\bigl(k_\tau,\,k_{\text{elbow}}\bigr),
 \]
-which guards against under-ranking while preserving interpretability. Defaults such as $\tau\approx0.995$ are reliable for clean images. 
+which guards against under-selection while preserving interpretability.
+Defaults such as $\tau\approx0.995$ are reliable for clean images. 
 On standard images (e.g., \texttt{astronaut}, \texttt{cameraman}), the hybrid rule avoids elbow under-selection and maintains a higher structural similarity at comparable ranks (see \cref{sec:applications,fig:adaptive_vs_manual}).
 
 \paragraph{Positioning vs.\ alternatives.}
@@ -133,6 +133,7 @@ and are not directly comparable across tasks, such as compression or PCA.
 In contrast, our hybrid rule is task-agnostic, reproducible, and guards against under-selection, without requiring prior calibration.
 
 \paragraph{Contributions.}
+The main contribution of this work is methodological and reproducibility-oriented.
 \begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
   \item \textbf{Unified framework.} A reproducible SVD workflow for image compression, denoising, and PCA with standardized inputs and metrics (PSNR, SSIM, energy retention, and runtime).
   \item \textbf{Adaptive rank selection.} A principled hybrid of cumulative energy and elbow criteria, robust to slow spectral decay.
@@ -401,8 +402,8 @@ Metrics are averaged over repeated runs (error bars show $\pm 1$ std).
 The runtime is measured on noisy inputs ($\sigma=0.10$, images normalized to $[0,1]$); PSNR/SSIM are always computed against a clean reference.
 
 \paragraph{Reproducibility metadata.}
-All figures/tables are emitted by commit \texttt{<commit-sha>} on Python~3.$x$, NumPy~$x.y$, 
-SciPy~$x.y$, with BLAS/LAPACK \texttt{<vendor, version>}. Absolute runtimes vary by backend, but relative trends were stable across MKL and OpenBLAS; PSNR/SSIM varied by at most $0.02$\,dB / $0.002$.
+All figures and tables were generated using a unified Python-based experimental pipeline with fixed random seeds and standardized preprocessing. 
+Although absolute runtimes may vary depending on hardware and numerical backends, the relative trends remained stable across different environments.
 
 \paragraph{Rank-$k$ formulations.}
 \begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
@@ -473,21 +474,20 @@ Eckart--Young~\cite{eckart1936approximation};
 (iii) QR offers speed advantages at reduced fidelity; 
 (iv) Adaptive selection improves quality over fixed settings while standardizing the decisions across tasks.
 
-Our contribution is to \textbf{consolidate} common heuristics into a principled, data-driven, 
-and fully reproducible pipeline. For clean images, a $99.5\%$ cumulative-energy threshold 
-emerges as a reliable default that balances perceptual fidelity with compression efficiency.
+Our contribution is to \textbf{consolidate} commonly used heuristics into a principled, data-driven, and fully reproducible framework for adaptive rank selection. 
+For clean images, a $99.5\%$ cumulative-energy threshold emerges as a reliable default that balances perceptual fidelity and compression efficiency.
 
-The entire framework, including the code and figure-generation scripts, is openly available.\footnote{All code and data are publicly accessible at 
-\url{https://github.com/gayaneghazaryan-dot/svd-image-analysis}. 
-Following acceptance, the complete repository will be archived in Zenodo with a permanent DOI to ensure long-term accessibility and reproducibility.}
+The proposed framework is primarily methodological and does not introduce a new matrix decomposition or new theoretical optimality guarantees. 
+In addition, the elbow-detection component remains partially empirical and may depend on the spectral characteristics of the data. 
+Nevertheless, the approach provides a unified and reproducible strategy for adaptive rank selection across multiple SVD-based applications.
+
+The entire framework, including the code and figure-generation scripts, is openly available.\footnote{All code and reproducibility materials are publicly accessible at 
+\url{https://github.com/gayaneghazaryan-dot/svd-image-analysis}.}
 
 
-\paragraph{Implementation updates.}
-All scripts were refactored into a unified and modular structure. 
-The updates standardize output directories (\texttt{results/Figures}, \texttt{results/Tables}), 
-remove redundant parameter blocks, and harmonize argument parsing across all modules. 
-These improvements do not alter experimental results but ensure that every figure and table in the paper 
-can be exactly reproduced with a single command execution in a clean environment.
+Implementation updates. 
+All scripts were refactored into a unified modular structure with standardized outputs and harmonized argument parsing. 
+These updates ensure that every figure and table can be reproduced from a clean environment with a single command execution.
 
 
 \paragraph{Future work.}
@@ -686,12 +686,6 @@ All Python scripts, figures, and tables used in this study are publicly availabl
 Each experiment—covering image compression, denoising, benchmarking, and PCA—can be reproduced in full by running one of the four Python scripts provided in the \texttt{code/} directory. 
 All figures and tables are generated automatically from these scripts, ensuring full reproducibility without the need for Jupyter notebooks or external data files.
 
-Upon acceptance, the repository will be permanently archived on Zenodo with a DOI to ensure long-term accessibility and versioned reproducibility.
-
-
-\section*{Acknowledgments}
-The authors gratefully acknowledge the open-source software community for providing the essential libraries and tools that made this work possible. 
-They also thank the editorial board of \emph{Mathematical Problems of Computer Science} for their consideration of this manuscript.
 
 
 \bibliographystyle{unsrtnat}
